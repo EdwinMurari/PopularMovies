@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.edwin.popularmoviesproject.DetailActivity">
+
+        <ImageView
+            android:id="@+id/moviePoster"
+            android:layout_width="match_parent"
+            android:layout_height="360sp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            style="@style/TextAppearance.AppCompat.Title" />
+
+        <TextView
+            android:id="@+id/synopsis_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8sp"
+            android:text="Plot Synopsis : "
+            style="@style/TextAppearance.AppCompat.Subhead" />
+
+        <TextView
+            android:id="@+id/synopsis_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8sp"
+            android:paddingLeft="8sp"
+            android:paddingRight="8sp"
+            style="@style/TextAppearance.AppCompat.Body1" />
+
+        <LinearLayout
+            android:id="@+id/rating_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8sp">
+
+            <TextView
+                android:id="@+id/rating_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Users Ratings : "
+                style="@style/TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:id="@+id/rating_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/release_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8sp">
+
+            <TextView
+                android:id="@+id/release_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Release Date : "
+                style="@style/TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:id="@+id/release_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

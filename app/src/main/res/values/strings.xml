@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <string name="sort_order">Sort order</string>
+    <string name="pref_sort_key">sort_order_key</string>
+
+    <string-array name="sort_order_list">
+        <item>by Popularity</item>
+        <item>by Top rated</item>
+    </string-array>
+    <string-array name="sort_value_list">
+        <item>popular?</item>
+        <item>top_rated?</item>
+    </string-array>
+</resources>
