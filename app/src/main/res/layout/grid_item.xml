@@ -17,6 +17,7 @@
         android:background="@color/colorAccent"
         android:gravity="center"
         android:padding="8dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:maxLines="1"/>
 
 </LinearLayout>
