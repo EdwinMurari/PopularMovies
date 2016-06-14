@@ -31,14 +31,14 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String[] mobileValues = new String[10];
-    static final String[] posterURL = new String[mobileValues.length];
-    static final String[] synopsis = new String[mobileValues.length];
-    static final double[] rating = new double[mobileValues.length];
-    static final String[] release = new String[mobileValues.length];
+    static final String[] title = new String[10];
+    static final String[] posterURL = new String[title.length];
+    static final String[] synopsis = new String[title.length];
+    static final double[] rating = new double[title.length];
+    static final String[] release = new String[title.length];
 
     GridView gridView;
-    ImageAdapter mMovieInfoAdapter = new ImageAdapter(this, mobileValues, posterURL);
+    ImageAdapter mMovieInfoAdapter = new ImageAdapter(this, title, posterURL);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class)
-                        .putExtra("title", mobileValues[position])
+                        .putExtra("title", title[position])
                         .putExtra("imageurl", posterURL[position])
                         .putExtra("overview", synopsis[position])
                         .putExtra("rating", rating[position])
@@ -111,16 +111,17 @@ public class MainActivity extends AppCompatActivity {
             JSONObject movieinfoJson = new JSONObject(movieinfoJsonStr);
             JSONArray moviesArray = movieinfoJson.getJSONArray(OWM_RESULT);
 
-            for (int i = 0; i < mobileValues.length; i++) {
+
+            for (int i = 0; i < title.length; i++) {
                 JSONObject movie = moviesArray.getJSONObject(i);
-                mobileValues[i] = movie.getString(OWN_TITLE);
+                title[i] = movie.getString(OWN_TITLE);
                 posterURL[i] = imageBaseURL + highImageQuality + movie.getString(OWN_POSTER);
                 synopsis[i] = movie.getString(OWN_OVERVIEW);
                 rating[i] = movie.getInt(OWN_RATING);
                 release[i] = movie.getString(OWN_RELEASE);
             }
 
-            return mobileValues;
+            return title;
         }
 
         @Override
@@ -200,10 +201,8 @@ public class MainActivity extends AppCompatActivity {
         /*@Override
         protected void onPostExecute(String[] result) {
             if (result != null) {
-                mMovieInfoAdapter.clear();
-                for(String dayForecastStr : result) {
-                    mMovieInfoAdapter.add(dayForecastStr);
-                }
+                gridView = (GridView) findViewById(R.id.movies_gridview);
+                gridView.setAdapter(mMovieInfoAdapter);
                 // New data is back from the server.  Hooray!
             }
         }*/
