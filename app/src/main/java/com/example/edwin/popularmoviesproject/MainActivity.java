@@ -31,8 +31,9 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String[] title = new String[10];
+    static final String[] title = new String[20];
     static final String[] posterURL = new String[title.length];
+    static final String[] baseDropURL = new String[title.length];
     static final String[] synopsis = new String[title.length];
     static final double[] rating = new double[title.length];
     static final String[] release = new String[title.length];
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        gridView = (GridView) findViewById(R.id.movies_gridview);
         updateGrid();
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class)
                         .putExtra("title", title[position])
-                        .putExtra("imageurl", posterURL[position])
+                        .putExtra("imageurl", baseDropURL[position])
                         .putExtra("overview", synopsis[position])
                         .putExtra("rating", rating[position])
                         .putExtra("release", release[position]);
@@ -67,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
     private void updateGrid() {
         FetchMovieInfo movieTask = new FetchMovieInfo();
         movieTask.execute();
-
-        gridView = (GridView) findViewById(R.id.movies_gridview);
         gridView.setAdapter(mMovieInfoAdapter);
     }
 
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             final String OWM_RESULT = "results";
             final String OWN_TITLE = "title";
             final String OWN_POSTER = "poster_path";
+            final String OWN_BASEDROP = "backdrop_path";
             final String OWN_OVERVIEW = "overview";
             final String OWN_RELEASE = "release_date";
             final String OWN_RATING = "vote_average";
@@ -111,11 +112,13 @@ public class MainActivity extends AppCompatActivity {
             JSONObject movieinfoJson = new JSONObject(movieinfoJsonStr);
             JSONArray moviesArray = movieinfoJson.getJSONArray(OWM_RESULT);
 
+            Log.v(LOG_TAG, "Number of movies : " + moviesArray.length());
 
             for (int i = 0; i < title.length; i++) {
                 JSONObject movie = moviesArray.getJSONObject(i);
                 title[i] = movie.getString(OWN_TITLE);
                 posterURL[i] = imageBaseURL + highImageQuality + movie.getString(OWN_POSTER);
+                baseDropURL[i] = imageBaseURL + highImageQuality + movie.getString(OWN_BASEDROP);
                 synopsis[i] = movie.getString(OWN_OVERVIEW);
                 rating[i] = movie.getInt(OWN_RATING);
                 release[i] = movie.getString(OWN_RELEASE);
@@ -142,15 +145,11 @@ public class MainActivity extends AppCompatActivity {
 
                 INFO_BASE_URL = INFO_BASE_URL + sortOrder;
 
-                Log.v(LOG_TAG, "Sort Order :  " + sortOrder);
-
                 Uri builtUri = Uri.parse(INFO_BASE_URL).buildUpon()
                         .appendQueryParameter(APPID_PARAM, BuildConfig.THEMOVIEDB_API_KEY)
                         .build();
 
                 URL url = new URL(builtUri.toString());
-
-                Log.v(LOG_TAG, "Built URI " + builtUri.toString());
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -198,14 +197,12 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
-        /*@Override
+        @Override
         protected void onPostExecute(String[] result) {
             if (result != null) {
-                gridView = (GridView) findViewById(R.id.movies_gridview);
                 gridView.setAdapter(mMovieInfoAdapter);
-                // New data is back from the server.  Hooray!
             }
-        }*/
+        }
     }
 
 }

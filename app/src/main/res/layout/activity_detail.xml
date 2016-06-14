@@ -6,15 +6,15 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context="com.example.edwin.popularmoviesproject.DetailActivity">
 
         <ImageView
             android:id="@+id/moviePoster"
             android:layout_width="match_parent"
-            android:layout_height="360sp"
-            android:scaleType="centerCrop" />
+            android:layout_height="202sp"
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/title_textview"
@@ -22,47 +22,61 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:gravity="center"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            style="@style/TextAppearance.AppCompat.Title" />
+            android:textSize="24sp"/>
 
         <TextView
             android:id="@+id/synopsis_head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8sp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="24dp"
+            android:textSize="24sp"
             android:text="Plot Synopsis : "
-            style="@style/TextAppearance.AppCompat.Subhead" />
+            android:textColor="@color/primary_text" />
 
         <TextView
             android:id="@+id/synopsis_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="8sp"
-            android:paddingLeft="8sp"
-            android:paddingRight="8sp"
-            style="@style/TextAppearance.AppCompat.Body1" />
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/secondary_text" />
 
         <LinearLayout
             android:id="@+id/rating_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8sp">
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
 
             <TextView
                 android:id="@+id/rating_head"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Users Ratings : "
-                style="@style/TextAppearance.AppCompat.Subhead" />
+                android:paddingRight="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/primary_text" />
 
             <TextView
                 android:id="@+id/rating_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,19 +84,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8sp">
+            android:paddingBottom="24dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
 
             <TextView
                 android:id="@+id/release_head"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Release Date : "
-                style="@style/TextAppearance.AppCompat.Subhead" />
+                android:paddingRight="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/primary_text" />
 
             <TextView
                 android:id="@+id/release_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text" />
         </LinearLayout>
 
 

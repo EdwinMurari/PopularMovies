@@ -3,6 +3,7 @@ package com.example.edwin.popularmoviesproject;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,9 @@ public class DetailActivity extends AppCompatActivity {
         double rating = intent.getDoubleExtra("rating", 0.0);
         String release = intent.getStringExtra("release");
 
+        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         TextView movieTitle = (TextView) findViewById(R.id.title_textview);
         movieTitle.setText(title);
 
@@ -39,5 +43,11 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView releaseTV = (TextView) findViewById(R.id.release_text);
         releaseTV.setText(release);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
+
     }
 }
